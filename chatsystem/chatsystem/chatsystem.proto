@@ -1,0 +1,28 @@
+syntax = "proto3";
+package chatsystem;
+
+option go_package = './;chatsystem'; //relative location; package
+
+// The service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SendMassage (SendRequest) returns (SendReply) {}
+  rpc RecvMassage (RecvRequest) returns (stream RecvReply) {}
+}
+
+message SendRequest {
+  string rcv = 1;
+  string msg = 2;
+}
+
+message SendReply {
+  string msg = 1;
+}
+
+message RecvRequest {
+  string rcv = 1;
+}
+
+message RecvReply {
+  string msg = 1;
+}
